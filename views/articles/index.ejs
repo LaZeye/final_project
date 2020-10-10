@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../articles/style/css/style.css">
+    <title>Mark Dunn</title>
+    <style>
+        
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --ff-primary: 'Noticia Text', serif;
+    --ff-secondary: 'Noticia Text', serif ;
+
+    --fw-reg: 400;
+    --fw-bold: 700;
+
+    --clr-light: #fff;
+    --clr-dark: #303830;
+    --clr-accent: #36a9eb;
+
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+          0.125em 0.125em 0.25em rgba(0,0,0,.15);
+}
+
+@media (min-width: 880px) {
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.125rem; 
+    }
+}
+
+body {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+section {
+    padding: 5em 2em;
+}
+
+footer {
+    margin-top: 3rem;
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+strong {
+    font-weight: var(--fw-bold) ;
+}
+
+:focus {
+    outline: 2px solid var(--clr-accent);
+    outline-offset: 2px ;
+}
+
+#btn-delete {
+    background-color: #ff6663;
+    color: var(--clr-dark);
+}
+
+#btn-new {
+    background-color: var(--clr-accent);
+    color: var(--clr-dark);
+}
+
+#btn-more {
+    background-color: #81ffa3;
+    color: var(--clr-dark);
+    border: solid #5dbd76 1px;
+}
+
+.btn {
+    display: inline-block;
+    padding: .5em 2.5em;
+    background: var(--clr-accent);
+    color: var(--clr-dark);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+}
+
+#main-blog {
+    margin-top: 3rem;
+}
+
+.btn:hover {
+    transform: scale(1.3);
+}
+
+h1, h2, h3 {
+    line-height: 1.1;
+    margin: 0;
+    color: var(--clr-accent);
+
+}
+
+h1 { font-size: var(--fs-h1) }
+h2 { font-size: var(--fs-h2) }
+h3 { font-size: var(--fs-h3) }
+
+.section__title {
+    margin-bottom: .25em;
+}
+
+.section__title--intro {
+    font-weight:var(--fw-reg) ;
+}
+.section__title--intro strong{
+   display: block;
+}
+
+.section__subtitle {
+    margin: 0;
+    font-size: var(--fs-h3);
+}
+
+.section__subtitle--intro, .section__subtitle--about {
+    background: var(--clr-accent);
+    padding: .25em 1em;
+    font-family: var(--ff-secondary);
+    margin-bottom: 1em;
+}
+
+/* Nav  */
+
+/* Intro Section */
+
+.intro {
+    position: relative;
+}
+
+.intro-img {
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px) {
+    .intro {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column: 1em;
+        grid-template-areas: 
+            "img title"
+            "img subtitle";
+        grid-template-columns: min-content max-content;
+    }
+    .intro-img {
+        grid-area: img; 
+        min-width: 250px;
+        position: relative;
+        z-index: 2;
+    }
+    .section__subtitle--intro {
+        align-self: start;
+        grid-column: -1 / 1;    
+        grid-row: 2;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+    }
+
+}
+
+
+/* My Services Section */
+
+.my-services {
+    background-color: var(--clr-dark);
+    background-image: url(../img/logo.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-blend-mode: multiply;
+    color: var(--clr-light);
+    text-align: center;
+}
+
+.section__title--services {
+    color: var(--clr-accent);
+    position: relative;
+}
+
+.section__title--services::after {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 1px;
+    margin: 0.5em auto 1em;
+    background: currentColor;
+    opacity: 0.25;
+}
+
+.services {
+    margin-bottom: 4em;
+}
+
+.service {
+    max-width: 500px;
+    margin: 0 auto;
+} 
+
+@media (min-width: 800px){
+    .services {
+        display: flex;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .service + .service {
+        margin-left: 2em;
+    }
+}
+
+.about {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about__img {
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px){
+    .about {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-areas: 
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+    }
+    .section__title--about{
+        grid-column: title;
+    }
+    .section__subtitle--about {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -2em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-right: calc(200px + 2em);
+
+    }
+    .about__img {
+        grid-area: img;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* My Work */
+
+.my-work {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+.section__subtitle-work {
+    color: var(--clr-accent);
+    font-weight: var(--fw-bold);
+    margin-bottom: 2em;
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.portfolio__item {
+    /* background: var(--clr-accent); */
+    overflow: hidden;
+}
+
+.portfolio__img {
+   width: 325px;
+    height: 240px;
+    transition: transform 750ms cubic-bezier(.5, 0, .5, 1),
+    opacity 250ms linear;
+    padding-bottom: 1em;
+}
+
+.portfolio__item:focus {
+    position: relative;
+    z-index: 2;
+}
+
+.portfolio__img:hover,
+.portfolio__item:focus .portfolio__img {
+    transform: scale(1.2);
+    opacity: .75;
+}
+
+.link-to-blog {
+    background-color: var(--clr-dark);
+}
+
+@media (min-width: 600px){
+    .link-to-blog {
+        height: 9rem;
+        width: 8.2rem;
+        text-align: center;
+
+    }
+    @media (min-width: 900px){
+        .link-to-blog {
+            height: 20rem;
+            width: 17rem;
+            text-align: center;
+            font-size: 3rem;
+    
+        }
+a:active, a:visited, a:link {
+    text-decoration: none;
+    color: var(--clr-light);
+    color: var(--clr-accent);
+}
+
+a:hover {
+    color: var(--clr-light);
+    
+}
+
+#blog-button {
+    color: var(--clr-dark);
+    font-weight: bold;
+    font-size: 2rem;
+}
+    </style>
+</head>
+
+<body>
+    <a href="####"></a>
+<!-- Introduction-->
+        <section class="intro" id="home">
+            <h1>Mark Dunn</h1>
+            <p class="section__subtitle section__subtitle--intro">Network Engineer</p>
+            <img src="../img/mark_cover.jpg" alt="">
+        </section>
+<!-- My Services-->
+        <section class="my-services" id="services">
+            <h2 class="section__title section_title--services">What I do</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Routing and Switching</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ex asperiores, odit dolores rerum at similique quod ullam corrupti molestiae temporibus! Tenetur voluptatibus ipsa distinctio.</p>
+                </div> <!-- end service-->
+                <div class="service">
+                    <h3>Security Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quos eius fuga praesentium pariatur similique, a ut vel quis ipsum.</p>
+                </div> <!-- end service-->
+                <div class="service">
+                    <h3>IP Telephony</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod sunt tempora ab veritatis inventore! Blanditiis, doloribus minima! Impedit ipsum, reiciendis quibusdam ipsam obcaecati enim temporibus?</p>
+                </div> <!-- end service-->
+            </div> <!-- end all services-->
+        </section>
+<!-- About -->
+        <section class="about" id="about">
+            <h2 class="section__title section__title--about"> Who I Am</h2>
+            <p class="section__subtitle section__subtitle--about">Mark - The Packet Maniac</p>
+            <img src="../img/mark_data_center.JPG" alt="">
+            <div class="about__body">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste repellat maiores hic placeat fugiat ea nam. Reprehenderit molestiae, aliquid doloribus earum consequuntur repellendus, eligendi, illo veniam molestias ab unde dolor?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti sequi sunt eum, voluptatibus ipsa natus quod unde, aperiam deleniti nihil blanditiis.</p>
+            </div>
+        </section>
+<!-- Experience-->
+        <section class="my-work" id="work">
+            <h2 class="section__title">Interests</h2>
+            <p class="section__subtitle"></p>
+            <div class="portfolio">
+                <!-- Portfolio Item 01-->
+                <a href="https://www.bcsconsultants.com/2019/10/what-data-center-cabling-infrastructure-should-be-all-about/" class="portfolio__item">
+                    <img src="../img/cable-management.jpg" alt="" class="portfolio__img">
+                </a>
+                <!-- Portfolio Item 02-->
+                <a href="https://searchnetworking.techtarget.com/tip/7-factors-to-consider-in-network-redundancy-design" class="portfolio__item">
+                    <img src="../img/phrase.jpg" alt="" class="portfolio__img">
+                </a>
+                <!-- Portfolio Item 03-->
+                <a href="https://www.varonis.com/blog/how-to-use-wireshark/" class="portfolio__item">
+                    <img src="../img/packet-capture.png" alt="" class="portfolio__img">
+                </a>
+                <!-- Portfolio Item 06-->
+                <a href="https://www.tenfold.com/what-is/cisco-voip-phone-systems-let-small-businesses-grow-communications" class="portfolio__item">
+                    <img src="../img/8811.jpg" alt="" class="portfolio__img">
+                </a>
+                <!-- Portfolio Item 05-->
+                <a href="https://blogs.cisco.com/perspectives/cyber-security-capture-the-flag-ctf-series-part-2-developing" class="portfolio__item">
+                    <img src="../img/design.jpg" alt="" class="portfolio__img">
+                </a>    
+                <!-- Portfolio Item 06-->
+                <a href="https://www.systcom.com/blog/untangling-secret-organizing-your-network-closet" class="portfolio__item">
+                    <img src="../img/patch_panel.jpeg" alt="" class="portfolio__img">
+                </a>   
+                <!-- Portfolio Item 06-->
+                <a href="https://www.systcom.com/blog/untangling-secret-organizing-your-network-closet" class="portfolio__item">
+                    <img src="../img/netDevops.png" alt="" class="portfolio__img">
+                </a>
+                <!-- Portfolio Item 06-->
+                <a href="https://www.systcom.com/blog/untangling-secret-organizing-your-network-closet" class="portfolio__item">
+                    <img src="../img/python.png" alt="" class="portfolio__img">
+                </a>                                 
+            </div>
+        </section>
+    </div>
+
+    <div class="container" id="main-blog">
+        <h1 class="mb-4" id="blog-start">Blog Articles</h1>
+        <a href="/articles/new" class="btn btn-success" id="btn-new">Post New Article</a>
+
+        <% articles.forEach(article => { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title"> <%= article.title %> </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <h4> <%= article.createdAt.toLocaleDateString() %> </h4>
+                    </div>
+                    <div class="card-text mb-2"> <%= article.description %>  </div>
+                    <a href="articles/<%= article.slug %>" class="btn btn-primary" id="btn-more"> Read More!</a>
+                    <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" href="#blog-start" class="btn btn-danger" id="btn-delete">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+
+    <footer>
+        <hr>
+        <h6>&copy; Mark Dunn 2020</h6>
+    </footer>
+
+
+
+
+</body>
+</html>
